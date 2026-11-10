@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Yosry Mohamed | Junior .NET Backend Developer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slateDark: '#0B1120',
+                        navyCard: '#151F32',
+                        accentBlue: '#38BDF8',
+                        accentHover: '#0284C7',
+                        techBorder: '#1E293B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1120;
+            color: #F8FAFC;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38BDF8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284C7;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen relative overflow-x-hidden selection:bg-accentBlue selection:text-slateDark">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-slateDark/90 backdrop-blur-md border-b border-techBorder shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo / Name -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-accentBlue/10 border border-accentBlue/30 flex items-center justify-center text-accentBlue font-mono font-bold text-lg group-hover:bg-accentBlue group-hover:text-slateDark transition-all duration-300">
+                        &lt;/&gt;
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold text-white tracking-wide">Mohamed Yosry Mohamed</span>
+                        <span class="text-xs text-accentBlue font-mono">.NET Backend Developer</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="text-gray-300 hover:text-accentBlue transition duration-200">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-accentBlue transition duration-200">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-accentBlue transition duration-200">Projects</a>
+                    <a href="#education" class="text-gray-300 hover:text-accentBlue transition duration-200">Education</a>
+                    <a href="#contact" class="text-gray-300 hover:text-accentBlue transition duration-200">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://github.com/pepoyosry78-cpu" target="_blank" class="p-2.5 rounded-lg bg-navyCard text-gray-300 hover:text-accentBlue hover:border-accentBlue/50 border border-techBorder transition" aria-label="GitHub">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/mohamed-yosry-278339234" target="_blank" class="p-2.5 rounded-lg bg-navyCard text-gray-300 hover:text-accentBlue hover:border-accentBlue/50 border border-techBorder transition" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin text-lg"></i>
+                    </a>
+                    <a href="#contact" class="px-4 py-2 bg-accentBlue text-slateDark font-bold rounded-lg hover:bg-accentHover transition text-sm">
+                        Contact Me
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-accentBlue focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-navyCard border-b border-techBorder px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-accentBlue border-b border-slateDark">About</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-accentBlue border-b border-slateDark">Skills</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-accentBlue border-b border-slateDark">Projects</a>
+            <a href="#education" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-accentBlue border-b border-slateDark">Education</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-accentBlue">Contact</a>
+            <div class="flex gap-4 pt-3">
+                <a href="https://github.com/pepoyosry78-cpu" target="_blank" class="flex-1 py-2 text-center rounded-lg bg-slateDark border border-techBorder text-gray-300 hover:text-accentBlue"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/mohamed-yosry-278339234" target="_blank" class="flex-1 py-2 text-center rounded-lg bg-slateDark border border-techBorder text-gray-300 hover:text-accentBlue"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+            <!-- Background Glows -->
+            <div class="absolute top-1/4 right-10 w-96 h-96 bg-accentBlue/10 rounded-full blur-3xl -z-10"></div>
+            <div class="absolute bottom-10 left-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-accentBlue/10 border border-accentBlue/20 text-accentBlue text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-accentBlue animate-ping"></span>
+                        <span>Open to new opportunities</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-white leading-tight">
+                        Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-l from-accentBlue to-blue-400">Mohamed Yosry</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-300 code-font">
+                        Junior .NET Backend Developer
+                    </h2>
+
+                    <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+                        Junior .NET Backend Developer focused on building high-performance, maintainable RESTful APIs with .NET Core and C#. I apply Clean Architecture and Domain-Driven Design (DDD) to create scalable backend systems.
+                    </p>
+
+                    <!-- Quick Details -->
+                    <div class="flex flex-wrap gap-4 text-xs sm:text-sm text-gray-300 pt-2">
+                        <div class="flex items-center space-x-2 bg-navyCard/80 px-3.5 py-2 rounded-lg border border-techBorder">
+                            <i class="fa-solid fa-location-dot text-accentBlue"></i>
+                            <span>Aswan, Egypt</span>
+                        </div>
+                        <button onclick="copyToClipboard('Mohamed.7.yosry@gmail.com', 'email address')" class="flex items-center space-x-2 bg-navyCard/80 px-3.5 py-2 rounded-lg border border-techBorder hover:border-accentBlue/50 transition">
+                            <i class="fa-solid fa-envelope text-accentBlue"></i>
+                            <span dir="ltr">Mohamed.7.yosry@gmail.com</span>
+                            <i class="fa-regular fa-copy text-xs text-gray-400"></i>
+                        </button>
+                        <button onclick="copyToClipboard('01153128833', 'phone number')" class="flex items-center space-x-2 bg-navyCard/80 px-3.5 py-2 rounded-lg border border-techBorder hover:border-accentBlue/50 transition">
+                            <i class="fa-solid fa-phone text-accentBlue"></i>
+                            <span dir="ltr">01153128833</span>
+                            <i class="fa-regular fa-copy text-xs text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3.5 bg-accentBlue hover:bg-accentHover text-slateDark font-bold rounded-xl transition duration-300 shadow-lg shadow-accentBlue/20 flex items-center space-x-2">
+                            <i class="fa-solid fa-code"></i>
+                            <span>View Projects</span>
+                        </a>
+                        <a href="https://linkedin.com/in/mohamed-yosry-278339234" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-navyCard hover:bg-slateDark text-white border border-techBorder hover:border-accentBlue/50 font-semibold rounded-xl transition duration-300 flex items-center space-x-2">
+                            <i class="fa-brands fa-linkedin text-accentBlue"></i>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Code Card Feature Visual -->
+                <div class="lg:col-span-5">
+                    <div class="bg-navyCard border border-techBorder rounded-2xl p-5 shadow-2xl relative code-font">
+                        <!-- Card Header Terminal Style -->
+                        <div class="flex items-center justify-between pb-4 mb-4 border-b border-techBorder">
+                            <div class="flex space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs text-gray-500">Developer.cs</span>
+                        </div>
+
+                        <!-- Code Content Snippet -->
+                        <div class="text-xs sm:text-sm space-y-2 text-left overflow-x-auto text-gray-300">
+                            <p><span class="text-purple-400">public class</span> <span class="text-yellow-300">BackendDeveloper</span></p>
+                            <p>{</p>
+                            <p class="pl-4"><span class="text-purple-400">public string</span> Name { <span class="text-purple-400">get;</span> } = <span class="text-green-400">"Mohamed Yosry"</span>;</p>
+                            <p class="pl-4"><span class="text-purple-400">public string</span> Focus { <span class="text-purple-400">get;</span> } = <span class="text-green-400">".NET Core & Clean Architecture"</span>;</p>
+                            <p class="pl-4"><span class="text-purple-400">public string[]</span> Skills => <span class="text-purple-400">new</span>[]</p>
+                            <p class="pl-8">{</p>
+                            <p class="pl-12 text-accentBlue">"C#", "ASP.NET Core API", "EF Core",</p>
+                            <p class="pl-12 text-accentBlue">"SQL Server", "DDD", "Clean Architecture"</p>
+                            <p class="pl-8">};</p>
+                            <p class="pl-4"><span class="text-purple-400">public bool</span> ReadyToBuildHighPerformanceAPIs() => <span class="text-purple-400">true</span>;</p>
+                            <p>}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-navyCard/40 border-y border-techBorder">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-xs font-mono text-accentBlue tracking-widest uppercase mb-2">About the Developer</h2>
+                    <h3 class="text-3xl font-extrabold text-white">Professional Summary</h3>
+                    <div class="w-16 h-1 bg-accentBlue mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="bg-navyCard border border-techBorder p-8 rounded-2xl shadow-xl space-y-6 leading-relaxed text-gray-300">
+                    <p class="text-base sm:text-lg font-light text-justify">
+                        Results-driven Junior .NET Backend Developer focused on engineering high-performance, maintainable, and scalable RESTful APIs. Proficient in <strong class="text-white">C#</strong>, <strong class="text-white">ASP.NET Core</strong>, <strong class="text-white">Entity Framework Core</strong>, and <strong class="text-white">SQL Server</strong>.
+                    </p>
+                    <p class="text-base sm:text-lg font-light text-justify">
+                        I apply modern software design principles, including <strong class="text-accentBlue">Clean Architecture</strong>, <strong class="text-accentBlue">Domain-Driven Design (DDD)</strong>, and <strong class="text-accentBlue">SOLID</strong>. I also build decoupled data-access layers with the Repository Pattern and Unit of Work, implement flexible validation pipelines, and prioritize data security.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono text-accentBlue tracking-widest uppercase mb-2">Technical Expertise</h2>
+                <h3 class="text-3xl font-extrabold text-white">Skills &amp; Tools</h3>
+                <div class="w-16 h-1 bg-accentBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Category 1 -->
+                <div class="bg-navyCard border border-techBorder p-6 rounded-2xl hover:border-accentBlue/40 transition duration-300">
+                    <div class="flex items-center space-x-3 mb-4 text-accentBlue">
+                        <i class="fa-solid fa-code text-xl"></i>
+                        <h4 class="text-lg font-bold text-white">Languages &amp; Fundamentals</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">C#</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">SQL</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">LINQ</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">OOP</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Generics</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Extension Methods</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Exception Handling</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="bg-navyCard border border-techBorder p-6 rounded-2xl hover:border-accentBlue/40 transition duration-300">
+                    <div class="flex items-center space-x-3 mb-4 text-accentBlue">
+                        <i class="fa-solid fa-server text-xl"></i>
+                        <h4 class="text-lg font-bold text-white">Backend Frameworks</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">ASP.NET Core Web API</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">EF Core</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">ASP.NET Core Identity</span>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="bg-navyCard border border-techBorder p-6 rounded-2xl hover:border-accentBlue/40 transition duration-300">
+                    <div class="flex items-center space-x-3 mb-4 text-accentBlue">
+                        <i class="fa-solid fa-sitemap text-xl"></i>
+                        <h4 class="text-lg font-bold text-white">Architecture &amp; Patterns</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Clean Architecture</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Domain-Driven Design (DDD)</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">SOLID Principles</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Repository Pattern</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Unit of Work</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">DTOs</span>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="bg-navyCard border border-techBorder p-6 rounded-2xl hover:border-accentBlue/40 transition duration-300">
+                    <div class="flex items-center space-x-3 mb-4 text-accentBlue">
+                        <i class="fa-solid fa-database text-xl"></i>
+                        <h4 class="text-lg font-bold text-white">Databases</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Microsoft SQL Server</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">MySQL</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Relational Schema Design</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Normalization</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Migrations</span>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="bg-navyCard border border-techBorder p-6 rounded-2xl hover:border-accentBlue/40 transition duration-300">
+                    <div class="flex items-center space-x-3 mb-4 text-accentBlue">
+                        <i class="fa-solid fa-vial-circle-check text-xl"></i>
+                        <h4 class="text-lg font-bold text-white">Validation &amp; Testing</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">FluentValidation</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Unit Testing</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">xUnit</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Moq</span>
+                    </div>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="bg-navyCard border border-techBorder p-6 rounded-2xl hover:border-accentBlue/40 transition duration-300">
+                    <div class="flex items-center space-x-3 mb-4 text-accentBlue">
+                        <i class="fa-solid fa-wrench text-xl"></i>
+                        <h4 class="text-lg font-bold text-white">Tools</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Git</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">GitHub</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Swagger / OpenAPI</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Postman</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">Visual Studio</span>
+                        <span class="bg-slateDark border border-techBorder text-gray-200 text-xs px-3 py-1.5 rounded-lg code-font">SSMS</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Single Featured Project Section -->
+        <section id="projects" class="py-20 bg-navyCard/30 border-y border-techBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono text-accentBlue tracking-widest uppercase mb-2">Featured Project</h2>
+                    <h3 class="text-3xl font-extrabold text-white">Selected Work</h3>
+                    <div class="w-16 h-1 bg-accentBlue mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Single Project Showcase Card -->
+                <div class="bg-navyCard border border-techBorder rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 pb-8 border-b border-techBorder">
+                        <div>
+                            <div class="flex items-center space-x-3">
+                                <span class="px-3 py-1 rounded-full bg-accentBlue/10 border border-accentBlue/30 text-accentBlue text-xs font-mono">Featured Project</span>
+                                <span class="text-gray-400 text-xs font-mono" dir="ltr">08/2026 - Present</span>
+                            </div>
+                            <h4 class="text-2xl sm:text-3xl font-bold text-white mt-3">
+                                E-Commerce Backend System (.NET Core API)
+                            </h4>
+                        </div>
+                        <a href="https://github.com/pepoyosry78-cpu" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-slateDark border border-techBorder hover:border-accentBlue/50 text-accentBlue text-sm font-bold rounded-xl transition flex items-center space-x-2 shrink-0">
+                            <i class="fa-brands fa-github"></i>
+                            <span>View on GitHub</span>
+                        </a>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="py-6 border-b border-techBorder">
+                        <h5 class="text-xs font-mono text-gray-400 mb-3">Tech Stack:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">ASP.NET Core</span>
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">EF Core</span>
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">SQL Server</span>
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">Clean Architecture</span>
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">DDD</span>
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">FluentValidation</span>
+                            <span class="bg-slateDark border border-accentBlue/20 text-accentBlue text-xs px-3 py-1.5 rounded-lg code-font">Swagger</span>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Bullets -->
+                    <div class="pt-8 space-y-4">
+                        <h5 class="text-sm font-bold text-white">Project Highlights &amp; Architecture:</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
+                            <div class="bg-slateDark/60 p-4 rounded-xl border border-techBorder flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-accentBlue mt-1 shrink-0"></i>
+                                <span>Designed and built a modular RESTful backend using Clean Architecture and DDD, separating domain logic from external infrastructure.</span>
+                            </div>
+
+                            <div class="bg-slateDark/60 p-4 rounded-xl border border-techBorder flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-accentBlue mt-1 shrink-0"></i>
+                                <span>Modeled Products, Orders, and Customers, encapsulating business rules in domain entities and aggregates.</span>
+                            </div>
+
+                            <div class="bg-slateDark/60 p-4 rounded-xl border border-techBorder flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-accentBlue mt-1 shrink-0"></i>
+                                <span>Implemented the Repository Pattern and Unit of Work over EF Core to isolate persistence logic and support reliable transactions.</span>
+                            </div>
+
+                            <div class="bg-slateDark/60 p-4 rounded-xl border border-techBorder flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-accentBlue mt-1 shrink-0"></i>
+                                <span>Added flexible FluentValidation pipelines to validate HTTP requests before they reach the business logic layer.</span>
+                            </div>
+
+                            <div class="bg-slateDark/60 p-4 rounded-xl border border-techBorder flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-accentBlue mt-1 shrink-0"></i>
+                                <span>Used DTOs and entity mapping to separate database models from API contracts and reduce mass-assignment risks.</span>
+                            </div>
+
+                            <div class="bg-slateDark/60 p-4 rounded-xl border border-techBorder flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-accentBlue mt-1 shrink-0"></i>
+                                <span>Managed database schema changes with EF Core migrations and SQL Server Management Studio (SSMS).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-mono text-accentBlue tracking-widest uppercase mb-2">Academic Background</h2>
+                <h3 class="text-3xl font-extrabold text-white">Education &amp; Certifications</h3>
+                <div class="w-16 h-1 bg-accentBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="bg-navyCard border border-techBorder rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-xl bg-accentBlue/10 border border-accentBlue/30 text-accentBlue flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white">Bachelor of Agricultural Engineering</h4>
+                        <p class="text-gray-400 text-sm mt-1">Aswan University</p>
+                        <span class="inline-block text-xs bg-slateDark border border-techBorder text-gray-300 px-2.5 py-1 rounded-md mt-2">Overall Grade: Good</span>
+                    </div>
+                </div>
+                <div class="text-accentBlue font-mono text-sm bg-slateDark px-4 py-2 rounded-xl border border-techBorder self-start sm:self-center">
+                    2020 - 2024
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-navyCard/40 border-t border-techBorder">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+                <div>
+                    <h2 class="text-xs font-mono text-accentBlue tracking-widest uppercase mb-2">Get in Touch</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Let’s Build Something Great Together</h3>
+                    <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-xl mx-auto">
+                        I’m always happy to discuss relevant opportunities, projects, and backend development.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+                    <!-- Email Card -->
+                    <div class="bg-navyCard border border-techBorder p-6 rounded-2xl text-center space-y-3">
+                        <div class="w-12 h-12 bg-accentBlue/10 text-accentBlue border border-accentBlue/30 rounded-xl flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm">Email</h4>
+                        <p class="text-xs text-gray-400 select-all">Mohamed.7.yosry@gmail.com</p>
+                        <button onclick="copyToClipboard('Mohamed.7.yosry@gmail.com', 'email address')" class="text-xs text-accentBlue hover:underline font-semibold">Copy Email</button>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="bg-navyCard border border-techBorder p-6 rounded-2xl text-center space-y-3">
+                        <div class="w-12 h-12 bg-accentBlue/10 text-accentBlue border border-accentBlue/30 rounded-xl flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm">Phone</h4>
+                        <p class="text-xs text-gray-400 select-all">01153128833</p>
+                        <button onclick="copyToClipboard('01153128833', 'phone number')" class="text-xs text-accentBlue hover:underline font-semibold">Copy Number</button>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="bg-navyCard border border-techBorder p-6 rounded-2xl text-center space-y-3 sm:col-span-2 lg:col-span-1">
+                        <div class="w-12 h-12 bg-accentBlue/10 text-accentBlue border border-accentBlue/30 rounded-xl flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm">Location</h4>
+                        <p class="text-xs text-gray-400">Aswan, Egypt</p>
+                        <span class="text-xs text-gray-500 block">Open to remote work or relocation</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-center space-x-4 pt-4">
+                    <a href="https://github.com/pepoyosry78-cpu" target="_blank" class="w-12 h-12 rounded-xl bg-navyCard border border-techBorder flex items-center justify-center text-gray-300 hover:text-accentBlue hover:border-accentBlue transition"><i class="fa-brands fa-github text-xl"></i></a>
+                    <a href="https://linkedin.com/in/mohamed-yosry-278339234" target="_blank" class="w-12 h-12 rounded-xl bg-navyCard border border-techBorder flex items-center justify-center text-gray-300 hover:text-accentBlue hover:border-accentBlue transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slateDark border-t border-techBorder py-8 text-center text-xs text-gray-500 code-font">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Mohamed Yosry Mohamed. Built with Clean Code Principles & Modern Web Standards.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Copy -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-accentBlue text-slateDark px-5 py-3 rounded-xl font-bold text-sm shadow-2xl transition-opacity duration-300 opacity-0 pointer-events-none z-50 flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toastMessage">Copied successfully!</span>
+    </div>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Copy to clipboard function
+        function copyToClipboard(text, label) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+
+            // Show Toast Notification
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = `${label} copied successfully!`;
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
